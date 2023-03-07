@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+  <AddIn Type="Command">
+    <Text>Command SheetMaker</Text>
+    <Description>Some description for SheetMaker</Description>
+    <Assembly>SheetMaker.dll</Assembly>
+    <FullClassName>SheetMaker.Command</FullClassName>
+    <ClientId>8df38300-67cf-4540-9d66-9cb09f4b2099</ClientId>
+    <VendorId>com.YOUR COMPANY NAME</VendorId>
+    <VendorDescription>YOUR COMPANY NAME, YOUR COMPANY URL</VendorDescription>
+  </AddIn>
+  <AddIn Type="Application">
+    <Name>Application SheetMaker</Name>
+    <Assembly>SheetMaker.dll</Assembly>
+    <FullClassName>SheetMaker.App</FullClassName>
+    <ClientId>ddf82733-edf4-4414-8cfa-f620499ff109</ClientId>
+    <VendorId>com.YOUR COMPANY NAME</VendorId>
+    <VendorDescription>YOUR COMPANY NAME, YOUR COMPANY URL</VendorDescription>
+  </AddIn>
+</RevitAddIns>
