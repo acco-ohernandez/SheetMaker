@@ -6,39 +6,59 @@
              xmlns:local="clr-namespace:SheetMaker"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Border Margin="10">
-    <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="60"/>
-                <RowDefinition Height="30"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="50"/>
-            </Grid.RowDefinitions>
-            <StackPanel Grid.Row="0" Orientation="Horizontal">
-                <Label Content="SHEET MAKER" FontSize="40" FontWeight="Bold"/>
-                <Label Content="" x:Name="info" Margin="60,0,0,0"/>
-            </StackPanel>
-
-            <Label Content="Enter Sheet Information Below:" x:Name="lbl_DatagridLabel" FontSize="18" Grid.Row="1"/>
-
-            <DataGrid x:Name="grdData" Grid.Row="2"/>
+    <Grid Margin="10">
+        <!--RowDefinition-->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
         
-            <Grid Grid.Row="3">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <StackPanel Orientation="Horizontal" Grid.Column="0">
-                
-                <Button x:Name="btn_Add" Content="+" Height="30" Width="30" HorizontalAlignment="Left"/>
-                <Button x:Name="btn_Remove" Content="-" Height="30" Width="30" HorizontalAlignment="Left"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" Grid.Column="1" HorizontalAlignment="Right">
-                    <Button x:Name="btn_Ok" Content="OK" Height="30" Width="90"/>
-                    <Button x:Name="btn_Cancel" Content="Cancel" Height="30" Width="90"/>
-                </StackPanel>
-            </Grid>
-            
+        <!--Row [0]-->
+        <StackPanel Grid.Row="0" Orientation="Horizontal">
+            <Label Content="SHEET MAKER" FontSize="40" FontWeight="Bold"/>
+            <Label Content="" x:Name="info" Margin="60,0,0,0"/>
+        </StackPanel>
+        
+        <!--Row [1]-->
+        <Label Grid.Row="1" Content="Enter Sheet Information Below:" x:Name="lbl_DatagridLabel" FontSize="18" />
+        
+        <!--Row [2]-->
+        <DataGrid x:Name="grdData" Grid.Row="2"
+                  GridLinesVisibility       ="All"
+                  AlternatingRowBackground  ="AliceBlue"
+                  CanUserAddRows            ="True"
+                  CanUserReorderColumns     ="True"
+                  SelectionMode             ="Single"
+                  AutoGenerateColumns       ="False"
+                  EnableColumnVirtualization="False"
+                  EnableRowVirtualization   ="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn         Header="Item 1" Width="100" IsReadOnly="False"             Binding="{Binding Item1}"/>
+                    <DataGridTextColumn     Header="Item 2" Width="*"   IsReadOnly="False"             Binding="{Binding Item2}"/>
+                    <DataGridCheckBoxColumn Header="Item 3" Width="100" IsReadOnly="False"             Binding="{Binding Item3}"/>
+                    <DataGridComboBoxColumn Header="Item 4" Width="200" IsReadOnly="False" SelectedItemBinding="{Binding Item4}" x:Name="Item4"/>
+
+            </DataGrid.Columns>
+        </DataGrid>
+        
+        <!--Row [3]-->
+        <Grid Grid.Row="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Orientation="Horizontal" Grid.Column="0">
+
+                <Button x:Name="btn_Add"    Content="+" Height="30" Width="30" HorizontalAlignment="Left" Click="btn_Add_Click" Margin="0,0,10,0"/>
+                <Button x:Name="btn_Remove" Content="-" Height="30" Width="30" HorizontalAlignment="Left" Click="btn_Remove_Click"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Grid.Column="1" HorizontalAlignment="Right">
+                <Button x:Name="btn_Ok"     Content="OK"     Height="30" Width="90" Click="btn_Ok_Click" Margin="0,0,10,0"/>
+                <Button x:Name="btn_Cancel" Content="Cancel" Height="30" Width="90" Click="btn_Cancel_Click"/>
+            </StackPanel>
         </Grid>
-    </Border>
+
+    </Grid>
 </Window>
