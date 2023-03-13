@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Autodesk.Revit.Creation;
+using Autodesk.Revit.DB;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -22,30 +24,43 @@ namespace SheetMaker
     /// </summary>
     public partial class MyForm : Window
     {
-        //ObservableCollection<DataClass1> dataList {get; set;}
         ObservableCollection<DataClass1> dataList { get; set; }
-        public MyForm()
+        ObservableCollection<string> dataItems { get; set; }
+
+        public MyForm(Autodesk.Revit.DB.Document doc)
         {
             InitializeComponent();
             dataList = new ObservableCollection<DataClass1>();
-            dataList.Add(new DataClass1());
+
+            dataItems = new ObservableCollection<string>();
+            FilteredElementCollector collector = new FilteredElementCollector(doc);
+            collector.OfCategory(BuiltInCategory.OST_TitleBlocks);
+            foreach (var item in collector)
+            {
+                dataItems.Add(item.Name);
+            }
+            // Bind to column 4 "Item4_Titleblock"
+            Item4_Titleblock.ItemsSource = dataItems;
+
+            // Add the ObservableCollection to the DataGrid
             grdData.ItemsSource = dataList;
+
         }
 
         private void btn_Add_Click(object sender, RoutedEventArgs e)
         {
-
+            dataList.Add(new DataClass1());
         }
 
         private void btn_Remove_Click(object sender, RoutedEventArgs e)
         {   // Grabs the selecgted row from th dataList and removes it
             try
             {
-                //foreach (DataClass1 curRow in dataList)
-                //{
-                //    if (grdData.SelectedItem == curRow)
-                //        dataList.Remove(curRow);
-                //}
+                foreach (DataClass1 curRow in dataList)
+                {
+                    if (grdData.SelectedItem == curRow)
+                        dataList.Remove(curRow);
+                }
             }
             catch (Exception)
             { }
@@ -61,6 +76,11 @@ namespace SheetMaker
         {
             this.DialogResult = false;
             this.Close();
+        }
+
+        public List<DataClass1> GetData()
+        {
+            return dataList.ToList();
         }
     }
 

@@ -35,11 +35,10 @@
                   EnableColumnVirtualization="False"
                   EnableRowVirtualization   ="False">
             <DataGrid.Columns>
-                <DataGridTextColumn         Header="Item 1" Width="100" IsReadOnly="False"             Binding="{Binding Item1}"/>
-                    <DataGridTextColumn     Header="Item 2" Width="*"   IsReadOnly="False"             Binding="{Binding Item2}"/>
-                    <DataGridCheckBoxColumn Header="Item 3" Width="100" IsReadOnly="False"             Binding="{Binding Item3}"/>
-                    <DataGridComboBoxColumn Header="Item 4" Width="200" IsReadOnly="False" SelectedItemBinding="{Binding Item4}" x:Name="Item4"/>
-
+                <DataGridTextColumn         Header="Sheet #"         Width="100" IsReadOnly="False"             Binding="{Binding Item1}"/>
+                    <DataGridTextColumn     Header="Sheet Name"      Width="*"   IsReadOnly="False"             Binding="{Binding Item2}"/>
+                    <DataGridCheckBoxColumn Header="Is Placeholder?" Width="100" IsReadOnly="False"             Binding="{Binding Item3}"/>
+                <DataGridComboBoxColumn     Header="Titleblock"      Width="200" IsReadOnly="False" SelectedItemBinding="{Binding Item4}" x:Name="Item4_Titleblock"/>
             </DataGrid.Columns>
         </DataGrid>
         
